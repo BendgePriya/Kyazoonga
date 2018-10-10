@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import '../css/site.css';
+import JsonData from '../config/JsonData.json'
 export default class Carousel extends Component{
   render(){
     return (
@@ -8,14 +9,11 @@ export default class Carousel extends Component{
         <div className="site-manu container">
           <div className="collapse navbar-collapse hide-on-mobile">
             <ul className="nav navbar-nav sub-main-nav">
-              <li><a href="#">Concerts</a></li>
-              <li><a href="#" className="blue-bg">Cricket</a></li>
-              <li><a href="#" className="orange-bg">Events</a></li>
-              <li><a href="#" className="green-bg">Sports</a></li>
-              <li><a href="#" className="pink-lt-bg">Amusement Parks</a></li>
-              <li><a href="#" className="purple-bg">Restaurants</a></li>
-              <li><a href="#" className="yellow-bg">Theatre &amp; Arts</a></li>
-              <li><a href="#">Parties</a></li>
+            {Object.keys(JsonData.siteMenu).map((data) =>{
+              return(
+              <li><a href="#" className={JsonData.siteMenu[data]}>{data}</a></li>
+            );  
+            })}
             </ul>
           </div>
           <div className="banner-serch-box"><input id="txtSearchBox" className name="q" defaultValue placeholder="Search for an event, venue or city" type="text" /><a href="javascript:void(0);" onclick="searchfor();"><i className="fa fa-search" aria-hidden="true" /></a></div>
